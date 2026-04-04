@@ -1,0 +1,23 @@
+{% extends 'tapasapp/base.html' %}
+{% load static %}
+
+
+
+                {% block content %}
+                <div class="col-md-8 offset-md-2">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Manage Account: {{ user.username }}</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="lead">Logged in as: "<strong>{{ user.username }}</strong>"</p>
+                            <hr>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="{% url 'change_password' pk=user.pk %}" class="btn btn-warning">Change Password</a>
+                                <a href="{% url 'delete_account' pk=user.pk %}" class="btn btn-danger" onclick="return confirm('Delete this account permanently?')">Delete Account</a>
+                                <a href="{% url 'basic_list' pk=user.pk %}" class="btn btn-secondary">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
