@@ -50,6 +50,8 @@ def update_dish(request, upk, dpk):
         return render(request, 'tapasapp/update_menu.html', {'user': user, 'd':d})
     
 def login_view(request):
+    msg = request.GET.get('msg')
+
     if(request.method=='POST'):
         uname = request.POST.get('username')
         pword = request.POST.get('password')
@@ -61,7 +63,7 @@ def login_view(request):
         else:
             return render(request, 'tapasapp/login.html', {'error': 'Invalid login'})
         
-    return render(request, 'tapasapp/login.html', {})
+    return render(request, 'tapasapp/login.html', {'msg': msg})
 
 def signup(request):
     if(request.method=='POST'):
@@ -72,7 +74,7 @@ def signup(request):
             return render(request, 'tapasapp/signup.html', {'error': 'Account already exists'})
         else:
             Account.objects.create(username=uname, password=pword)
-            return render(request, 'tapasapp/login.html', {'msg': 'Account created successfully'})
+            return redirect('/?msg=Account created successfully')
         
     return render(request, 'tapasapp/signup.html')
 
@@ -99,8 +101,9 @@ def change_password(request, pk):
     return render(request, 'tapasapp/change_password.html', {'user': user})
 
 def delete_account(request, pk):
-    Account.objects.filter(pk=pk).delete()
-    return redirect('login')
+    user = get_object_or_404(Account, pk=pk)
+    user.delete()
+    return redirect('logout')
 
 def logout(request):
     request.session.flush()
