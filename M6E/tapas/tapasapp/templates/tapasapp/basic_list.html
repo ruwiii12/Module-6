@@ -4,8 +4,8 @@
 
 
                 {% block content %}
-                <div class="col-12">
-                    <h1>Welcome, {{ user.username }}!</h1>
+                <div class="col-12 pt-3">
+                    <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
                     <hr>
                     <div class="mb-3">
                         <a href="{% url 'manage_account' pk=user.pk %}" class="btn btn-info">Manage Account</a>

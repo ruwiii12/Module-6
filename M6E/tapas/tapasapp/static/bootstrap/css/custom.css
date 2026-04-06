@@ -3,3 +3,30 @@
     text-align: center;
     background-color: black;
 }
+
+.footer {
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+
+.custom-card {
+    background-color: #f8f8f8;
+    border: none;
+}
+
+.custom-header {
+    background-color: #3e0f08;
+    color: #ffffff;
+    border-bottom: none;
+}
+
+.signup-header {
+    background-color: #f8f8f8; 
+    color: #3e0f08;
+    border-bottom: 1px solid #ddd;
+}
+
+.welcome-text {
+    color: #3e0f08;
+}
