@@ -12,6 +12,7 @@
 
 .custom-card {
     background-color: #f8f8f8;
+    border-radius: 0;
     border: none;
 }
 
@@ -29,4 +30,20 @@
 
 .welcome-text {
     color: #3e0f08;
+}
+
+.manage-card {
+    border: none;
+    border-radius: 0;
+    background-color: #f2f2f2;
+}
+
+.manage-card-header {
+    background-color: #f1f1e2;
+    border-radius: 0;
+}
+
+.account-title {
+    color: #3e0f08;
+    font-weight: 600;
 }
