@@ -11,8 +11,5 @@
                         <a href="{% url 'manage_account' pk=user.pk %}" class="btn btn-info">Manage Account</a>
                         <a href="{% url 'logout' %}" class="btn btn-dark">Logout</a>
                     </div>
-                    
-                    <h3 style="padding-top: 20px">Your Features</h3>
-                    <a href="{% url 'better_menu' pk=user.pk %}" class="btn btn-secondary">View Tapas Menu</a>
                 </div>
                 {% endblock %}
