@@ -45,5 +45,6 @@
 
 .account-title {
     color: #3e0f08;
-    font-weight: 600;
+    font-weight: bold;
+    text-align: center
 }

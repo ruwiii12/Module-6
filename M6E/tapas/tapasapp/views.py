@@ -3,7 +3,6 @@ from .models import Dish, Account
 
 # Create your views here.
 
-
 def better_menu(request, pk=None):
     if pk is None:
         return redirect('tapasapp/login.html')
