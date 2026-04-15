@@ -88,15 +88,32 @@ def manage_account(request, pk):
 def change_password(request, pk):
     user = get_object_or_404(Account, pk=pk)
     
-    if(request.method=='POST'):
+    if request.method == 'POST':
         current_pword = request.POST.get('current_pword')
         new_pword = request.POST.get('new_pword')
         confirm_pword = request.POST.get('confirm_pword')
 
-        if current_pword == user.password and new_pword == confirm_pword:
-            Account.objects.filter(pk=pk).update(password=new_pword)
-            return redirect('manage_account', pk=user.pk)
-        
+        if current_pword != user.password:
+            return render(request, 'tapasapp/change_password.html', {
+                'user': user,
+                'error': 'Current password is incorrect'
+            })
+
+        elif new_pword != confirm_pword:
+            return render(request, 'tapasapp/change_password.html', {
+                'user': user,
+                'error': 'New passwords do not match'
+            })
+
+        elif new_pword == current_pword:
+            return render(request, 'tapasapp/change_password.html', {
+                'user': user,
+                'error': 'New password cannot be the same as current password'
+            })
+
+        user.password = new_pword
+        user.save()
+        return redirect('manage_account', pk=user.pk)
     return render(request, 'tapasapp/change_password.html', {'user': user})
 
 def delete_account(request, pk):
