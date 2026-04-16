@@ -16,8 +16,9 @@
                             {% for d in dishes %}
                             <tr>
                                 <td> {{ d.name }} </td>
-                                <td> {{ d.prep_time }} </td>
                                 <td> {{ d.cook_time }} </td>
+                                <td> {{ d.prep_time }} </td>
+                                
                                 <td><a href="{% url 'view_detail' upk=user.pk dpk=d.pk %}"  class="btn btn-dark">Details</button></td>
                             </tr>
                             {% endfor %}
